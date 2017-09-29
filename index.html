@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta name="description" content="Robert Bain's Portfolio Website">
+  	<meta name="author" content="Robert Bain">
+  	<title>Rob Bain's Portfolio</title>
+  	<link rel="stylesheet" href="./css/css.css">
+  	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<!--Overlay Menu-->
+	<div id="myNav" class="overlay">
+  		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  		<div class="overlay-content">
+    		<a href="#home" onclick="closeNav()">Home</a>
+    		<a href="#about" onclick="closeNav()">About</a>
+    		<a href="#skills" onclick="closeNav()">Skills</a>
+    		<a href="https://robertbain.pythonanywhere.com" onclick="closeNav()">Blog</a>
+  		</div>
+	</div>
+
+	<!--Hamburger Icron-->
+	<span id="hamburger" onclick="openNav()">
+		<div class="bar1"></div>
+  		<div class="bar2"></div>
+  		<div class="bar3"></div>
+	</span>
+
+	<!--Landing Banner-->
+	<div class="landing-banner" id="home">
+		<p class="intro-text">Hello! <br> I am Robert Bain, a Front-End Developer in the beautiful Eugene, Oregon.</p>
+	</div>
+
+	<!--"About Me" Section-->
+	<div class="about-me" id="about">
+		<img src="./images/selfie.jpg" title="That's me!" alt="A picture of an average looking caucasian male" class="selfie">
+		<div class="biography">
+			At my foundation I am a scientist, educator, and humanist.
+		</div>
+		<div class="blog">
+			Read more about me on my<br><a href="https://robertbain.pythonanywhere.com">Blog</a>
+		</div>
+	</div>
+
+	<!--Skills Section-->
+	<div class="skill-section" id="skills">
+		<div class="skills-text">Technologies I Use:</div>
+		<ul class="skills-list">
+			<li><img src="./images/html5.svg" title="HTML5" alt="An HTML5 icon" class="svg"></li>
+			<li><img src="./images/css3.svg" title="CSS3" alt="A CSS3 icon" class="svg"></li>
+			<li><img src="./images/javascript.svg" title="JavaScript" alt="A JavaScript icon" class="svg"></li>
+			<li><img src="./images/grunt.svg" title="GRUNT Task Manager" alt="The Grunt Logo with 'Grunt' written along the bottom" class="svg"></li>
+			<li><img src="./images/git.svg" title="Git" alt="The Git logo" class="svg"></li>
+			<li><img src="./images/django.svg" title="Django" alt="A Django icon" class="svg"></li>
+			<li><img src="./images/bash.svg" title="Bourne Again SHell" alt="A BASH icon" class="svg"></li>
+			<li><img src="./images/bootstrap.svg" title="Bootstrap 3" alt="A bootstrap 3 logo" class="svg"></li>
+			<li><img src="./images/c.svg" title="C-Language" alt="A C-language icon" class="svg"></li>
+			<li><img src="./images/cli.svg" title="Microsoft Windows Command Line Interface" alt="An icon depicting a Microsoft Window's Command Line Interface" class="svg"></li>
+			<li><img src="./images/ajax.svg" title="Asynchronous JavaScript And XML" alt="An Ajax icon" class="svg"></li>
+			<li><img src="./images/jquery.svg" title="jQuery" alt="A jquery icon" class="svg"></li>
+			<li><img src="./images/mysql.svg" title="MySQL" alt="The MySQL logo" class="svg"></li>
+			<li><img src="./images/php.svg" title="PHP" alt="The PHP logo" class="svg"></li>
+			<li><img src="./images/rwd.svg" title="Responsive Web Design" alt="An icon representing Responsive Web Design" class="svg"></li>
+			<li><img src="./images/sass.svg" title="Sass" alt="The Sass logo" class="svg"></li>
+			<li><img src="./images/windows.svg" title="Microsoft Windows OS" alt="Modern Windows Logo" class="svg"></li>
+			<li><img src="./images/linux.svg" title="Linux OS" alt="An svg of the Linux Penguin that I drew a heart on while learning inkscape" class="svg"></li>
+		</ul>
+	</div>
+
+<script>
+
+//When the page is loaded, resize the skills section's svg logo height to make a 1:1 aspect ratio
+$(document).ready(function() {
+	$(window).resize(function(){
+    	$('.skills-list li').height($('.skills-list li').width());
+	}).trigger('resize');
+});
+
+//Menu Overlay Functions
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+    document.getElementById("hamburger").style.opacity="0";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+    document.getElementById("hamburger").style.opacity="1";
+}
+
+//Makes Hamburger Disappear/Appear on Scroll Events
+var lastScrollTop = 0;
+$(window).scroll(function(event){
+   var st = $(this).scrollTop();
+   if (st > lastScrollTop){
+       // downscroll code
+       document.getElementById("hamburger").style.top="-100px";
+   } else {
+      // upscroll code
+      document.getElementById("hamburger").style.top="5px";
+   }
+   lastScrollTop = st;
+});
+
+</script>
+
+</body>
+</html>
