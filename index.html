@@ -6,7 +6,7 @@
   	<meta name="description" content="Robert Bain's Portfolio Website">
   	<meta name="author" content="Robert Bain">
   	<title>My Portfolio</title>
-  	<link rel="stylesheet" href="./css/css.css">
+  	<link rel="stylesheet" href="./css/css.css?v=3.4.1">
   	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -33,12 +33,12 @@
 
 	<!--Landing Banner-->
 	<div class="landing-banner" id="home">
-		<p class="intro-text">Hello!<br> I am Robert Bain, a Front-End Developer in the beautiful Eugene, Oregon.</p>
+		<p class="intro-text" tabindex="0">Hello!<br> I am Robert Bain, a Front-End Developer in the beautiful Eugene, Oregon.</p>
 	</div>
 
 	<!--"About Me" Section-->
 	<div class="about-me" id="about">
-		<img src="./images/selfie.jpg" title="That's me!" alt="A picture of an average looking caucasian male" class="selfie">
+		<img src="./images/selfie.jpg" title="That's me!" alt="A picture of an average looking caucasian male" class="selfie" tabindex="0">
 		<div class="biography">
 			At my foundation I am a scientist, educator, and humanist.
 		</div>
@@ -51,7 +51,7 @@
 	<div class="skill-section" id="skills">
 		<div class="skills-text">Technologies I Use:</div>
 		<ul class="skills-list">
-			<li><img src="./images/sass.svg" title="Sass" alt="The Sass logo" class="svg"></li>
+			<li tabindex="0"><img src="./images/sass.svg" title="Sass" alt="The Sass logo" class="svg"></li>
 			<li><img src="./images/jquery.svg" title="jQuery" alt="A jquery icon" class="svg"></li>
 			<li><img src="./images/django.svg" title="Django" alt="A Django icon" class="svg"></li>
 			<li><img src="./images/javascript.svg" title="JavaScript" alt="A JavaScript icon" class="svg"></li>
@@ -61,14 +61,14 @@
 			<li><img src="./images/bootstrap.svg" title="Bootstrap 3" alt="A bootstrap 3 logo" class="svg"></li>
 			<li><img src="./images/c.svg" title="C-Language" alt="A C-language icon" class="svg"></li>
 			<li><img src="./images/cli.svg" title="Microsoft Windows Command Line Interface" alt="An icon depicting a Microsoft Window's Command Line Interface" class="svg"></li>
-			<li><img src="./images/ajax.svg" title="Asynchronous JavaScript And XML" alt="An Ajax icon" class="svg"></li>
+			<li tabindex="0"><img src="./images/ajax.svg" title="Asynchronous JavaScript And XML" alt="An Ajax icon" class="svg"></li>
 			<li><img src="./images/css3.svg" title="CSS3" alt="A CSS3 icon" class="svg"></li>
 			<li><img src="./images/mysql.svg" title="MySQL" alt="The MySQL logo" class="svg"></li>
 			<li><img src="./images/php.svg" title="PHP" alt="The PHP logo" class="svg"></li>
 			<li><img src="./images/rwd.svg" title="Responsive Web Design" alt="An icon representing Responsive Web Design" class="svg"></li>
 			<li><img src="./images/html5.svg" title="HTML5" alt="An HTML5 icon" class="svg"></li>
 			<li><img src="./images/windows.svg" title="Microsoft Windows OS" alt="Modern Windows Logo" class="svg"></li>
-			<li><img src="./images/linux.svg" title="Linux OS" alt="An svg of the Linux Penguin that I drew a heart on while learning inkscape" class="svg"></li>
+			<li tabindex="0"><img src="./images/linux.svg" title="Linux OS" alt="An svg of the Linux Penguin that I drew a heart on while learning inkscape" class="svg"></li>
 		</ul>
 	</div>
 
@@ -76,25 +76,27 @@
 	<div id="projects">
 		<h1>Latest Projects:</h1>
 		<p style="text-align:center;">(Click Thumbnail to View Live Site)</p>
-		<div>
-			<a href="./mtg_training_guild">
-				<img src="./images/mtg.jpg" alt="A picture of the logged-in landing page for MTG Training Guild">
-			</a>
-			<p>This site is a light social media platform. It utilizes HTML5, CSS3, MySQL, PHP, AJAX, JavaScript, jQuery, and other technologies. I have learned a lot about styling and RWD since I last worked on this project. It could use an update.</p>
+		<div class="flex-projects">
+			<div>
+				<a href="./mtg_training_guild" class="project-link">
+					<img src="./images/mtg.jpg" alt="A picture of the logged-in landing page for MTG Training Guild">
+				</a>
+				<p>This site is a light social media platform. It utilizes HTML5, CSS3, MySQL, PHP, AJAX, JavaScript, jQuery, and other technologies. I have learned a lot about styling and RWD since I last worked on this project. It could use an update.</p>
+			</div>
+			<div>
+				<a href="http://robertbain.pythonanywhere.com" class="project-link">
+					<img src="./images/blog.jpg" alt="The top of a blog post from 'Robert Bain's Django Blog.'">
+				</a>
+				<p>I made this blog while learning to code using Django. There were several hurdles in making this site, one of which was installing a WYSIWYG editor package. It needs a restyle now that I am more familiar with Bootstrap 3 and Sass.</p>
+			</div>
+			<div>
+				<a href=./RWD_2 class="project-link">
+					<img src="./images/rwd.jpg" alt="Screenshot of a Webpage Titled 'Brighton Times.'">
+				</a>
+				<p>Google's Pete LePage & Udacity teamed up to offer two courses on Responsive Web Design. I took both, and this was the more interesting of the two sites that I produced. The page is static and uses random text, but it is a good example of RWD.</p>
+			</div>
 		</div>
-		<div>
-			<a href="http://robertbain.pythonanywhere.com">
-				<img src="./images/blog.jpg" alt="The top of a blog post from 'Robert Bain's Django Blog.'">
-			</a>
-			<p>I made this blog while learning to code using Django. There were several hurdles in making this site, one of which was installing a WYSIWYG editor package. It needs a restyle now that I am more familiar with Bootstrap 3 and Sass.</p>
-		</div>
-		<div>
-			<a href=./RWD_2>
-				<img src="./images/rwd.jpg" alt="Screenshot of a Webpage Titled 'Brighton Times.'">
-			</a>
-			<p>Google's Pete LePage & Udacity teamed up to offer two courses on Responsive Web Design. I took both, and this was the more interesting of the two sites that I produced. The page is static and uses random text, but it is a good example of RWD.</p>
-		</div>
-		<div class="blog">Read more about these and other projects on my<br><a href="https://robertbain.pythonanywhere.com">Blog</a></div>
+		<div class="blog" style="margin-top: 2em;">Read more about these and other projects on my<br><a href="https://robertbain.pythonanywhere.com">Blog</a></div>
 	</div>
 
 	<!--Footer-->
@@ -144,6 +146,14 @@ $(window).scroll(function(event){
       document.getElementById("hamburger").style.top="5px";
    }
    lastScrollTop = st;
+});
+
+//Set focus onto .project element when hovered over
+//but only if window width is larger than 900px
+$('.project-link').hover(function(){
+	if ($(window).width() > 900) {
+		this.focus();
+	}
 });
 
 </script>
