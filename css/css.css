@@ -28,10 +28,9 @@ li {
 /* Landing Styles */
 .landing-banner {
   height: 100vh;
-  background-clip: border-box;
-  background-origin: border-box;
-  background-image: url(../images/Eugene_Skyline.jpg);
+  background-image: url(../images/Photo_Credit_Don_Hankins_CC_by_2.5.jpg);
   background-size: cover;
+  background-position: right bottom;
   display: flex;
   justify-content: center;
   align-items: center;
