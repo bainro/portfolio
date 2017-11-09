@@ -6,9 +6,8 @@
   	<meta name="description" content="Robert Bain's Portfolio Website">
   	<meta name="author" content="Robert Bain">
   	<title>My Portfolio</title>
-  	<link rel="stylesheet" href="./css/css.css?v=3.4.1">
+  	<link rel="stylesheet" href="./css/styles.css">
   	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -32,8 +31,9 @@
 	</span>
 
 	<!--Landing Banner-->
-	<div class="landing-banner" id="home" title="Photo Credit: Don Hankins (CC by 2.5)">
+	<div class="landing-banner" id="home">
 		<p class="intro-text" tabindex="0">Hello!<br> I am Robert Bain, a Front-End Developer in the beautiful Eugene, Oregon.</p>
+		<div id="down-arrow">⇩</div>
 	</div>
 
 	<!--"About Me" Section-->
@@ -53,10 +53,13 @@
 		<ul class="skills-list">
 			<li tabindex="0"><img src="./images/sass.svg" title="Sass" alt="The Sass logo" class="svg"></li>
 			<li><img src="./images/jquery.svg" title="jQuery" alt="A jquery icon" class="svg"></li>
+			<li><img src="./images/node.svg" title="node.js" alt="The node.js icon" class="svg"></li>
+			<li><img src="./images/express.svg" title="express" alt="An ExpressJS icon" class="svg"></li>
 			<li><img src="./images/django.svg" title="Django" alt="A Django icon" class="svg"></li>
 			<li><img src="./images/javascript.svg" title="JavaScript" alt="A JavaScript icon" class="svg"></li>
 			<li><img src="./images/grunt.svg" title="GRUNT Task Manager" alt="The Grunt Logo with 'Grunt' written along the bottom" class="svg"></li>
 			<li><img src="./images/git.svg" title="Git" alt="The Git logo" class="svg"></li>
+			<li><img src="./images/socket.svg" title="Socket.io" alt="A Socket.io icon" class="svg"></li>
 			<li><img src="./images/bash.svg" title="Bourne Again SHell" alt="A BASH icon" class="svg"></li>
 			<li><img src="./images/bootstrap.svg" title="Bootstrap 3" alt="A bootstrap 3 logo" class="svg"></li>
 			<li><img src="./images/cli.svg" title="Microsoft Windows Command Line Interface" alt="An icon depicting a Microsoft Window's Command Line Interface" class="svg"></li>
@@ -77,22 +80,22 @@
 		<p style="text-align:center;">(View the code on my <a href="https://github.com/bainro/" target="_blank">GitHub</a>)</p>
 		<div class="flex-projects">
 			<div>
-				<a href="./mtg_training_guild" class="project-link">
-					<img src="./images/mtg_3x.jpg" alt="A picture of the logged-in landing page for MTG Training Guild">
+				<a href="https://www.youtube.com/watch?v=pyyr_N0aFsg" class="project-link" id="mtg" target="_blank">
+					<img src="./images/mtg_game_3x.jpg" alt="Screenshot of Magic Cards on a Faux Wood Game Board">
 				</a>
-				<p>MTG Training Guild is a recursive abbreviation (like GNU) along with being a light social media site. I plan to make this the front-end for a Magic the Gathering browser game I am making for me and my friends. It utilizes HTML5, CSS3, MySQL, PHP, AJAX, and JavaScript. Click the thumbnail to be one of the first to sign up!</p>
+				<p>This in-browser version of the popular Magic the Gathering card game took me a little under a week to build from scratch using Node.js, Socket.io, Express, and jQuery. It requires a mouse, keyboard, and a minimum resolution of 900x500 to play. This project is going to be integrated to my social media website to track user statistics, and to a database to view cards and create decks. Start a game by opening two <a id="demo" href="http://67.160.162.82:88" target="_blank">demo</a> tabs and choosing the decks, or click the thumbnail to view a demo video.</p>
 			</div>
 			<div>
 				<a href="http://robertbain.pythonanywhere.com" class="project-link">
 					<img src="./images/blog_3x.jpg" alt="The top of a blog post from 'Robert Bain's Django Blog.'">
 				</a>
-				<p>I made this blog in order to learn Django. One difficulty I encountered was installing a WYSIWYG editor package. The editor made it so I could more easily include images in my blog posts. I wrote 2 great posts about Nuclear Fusion and the Magellanic Clouds. I implore you to read them by clicking the thumbnail.</p>
+				<p>I made this blog in order to learn Django. One difficulty I encountered was installing a WYSIWYG editor package. The editor made it so I could more easily include images in my blog posts. I wrote 2 great posts about Nuclear Fusion and the Magellanic Clouds. Go read them by clicking the thumbnail!</p>
 			</div>
 			<div>
-				<a href=./RWD_2 class="project-link">
-					<img src="./images/rwd_3x.jpg" alt="Screenshot of a Webpage Titled 'Brighton Times.'">
+				<a href="./mtg_training_guild" class="project-link">
+					<img src="./images/mtg_3x.jpg" alt="A picture of the logged-in landing page for MTG Training Guild">
 				</a>
-				<p>Google's Pete LePage & Udacity teamed up to offer two courses on Responsive Web Design. I took both and of the two sites that I produced this one was more interesting. The page is static and uses random text, but it is a good example of RWD.</p>
+				<p>MTG Training Guild is a recursive abbreviation (like GNU) along with being a light social media site. I plan for this to become the front-end for my Magic the Gathering in-browser card game. The front-end utilizes HTML5, CSS3, MySQL, PHP, AJAX, and JavaScript. Click the thumbnail to be one of the first to sign up!</p>
 			</div>
 		</div>
 		<div class="blog" style="margin-top: 2em;">Read more about these and other projects on my<br><a href="https://robertbain.pythonanywhere.com" target="_blank">Blog</a></div>
@@ -113,19 +116,43 @@
 		</div>
 	</div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="underscore.js"></script>
 <script>
 
-//When the page is loaded, resize the skills section's svg logo height to make a 1:1 aspect ratio
 $(document).ready(function() {
-	$(window).resize(function(){
+
+	//Throttled function that resizes the skills section's svg logo height to maintain a 1:1 aspect ratio
+	_.throttle($(window).resize(function(){
     	$('.skills-list li').height($('.skills-list li').width());
-	}).trigger('resize');
+	}).trigger('resize'), 500, {trailing: false});
+
+	$('#down-arrow').on('click', function(){
+		var theDiff = $('.landing-banner').height() - $('html').scrollTop();
+		$("html").animate({ scrollTop: $('.landing-banner').height() });
+	});
+
+	//Makes Hamburger Disappear/Appear on Scroll Events
+	var lastScrollTop = 0;
+	$(window).scroll(function(event){
+    	var st = $(this).scrollTop();
+    	if (st > lastScrollTop){
+       		// downscroll code
+       		document.getElementById("hamburger").style.top="-100px";
+    	} 
+    	else {
+      		// upscroll code
+      		document.getElementById("hamburger").style.top="5px";
+   		}
+   		lastScrollTop = st;
+	});
+
 });
 
 //Menu Overlay Functions
 function openNav() {
-    document.getElementById("myNav").style.height = "100%";
-    document.getElementById("hamburger").style.opacity="0";
+	document.getElementById("myNav").style.height = "100%";
+	document.getElementById("hamburger").style.opacity="0";
 }
 
 function closeNav() {
@@ -133,27 +160,19 @@ function closeNav() {
     document.getElementById("hamburger").style.opacity="1";
 }
 
-//Makes Hamburger Disappear/Appear on Scroll Events
-var lastScrollTop = 0;
-$(window).scroll(function(event){
-   var st = $(this).scrollTop();
-   if (st > lastScrollTop){
-       // downscroll code
-       document.getElementById("hamburger").style.top="-100px";
-   } else {
-      // upscroll code
-      document.getElementById("hamburger").style.top="5px";
-   }
-   lastScrollTop = st;
-});
-
-//Set focus onto .project element when hovered over
-//but only if window width is larger than 900px
-$('.project-link').hover(function(){
-	if ($(window).width() > 900) {
-		this.focus();
+//Eventually have left and right buttons to go thru individual projects
+//Only when above 700 DIP
+/*$.each($('.flex-projects > div'), function(index, value){
+	scrollLeft = document.createElement('div');
+	scrollLeft.className = "scroll left";
+	value.append(scrollLeft);
+	scrollRight = document.createElement('div');
+	scrollRight.className = "scroll right";
+	value.append(scrollRight);
+	if(index != 0){
+		value.style.display = "none";
 	}
-});
+});*/
 
 </script>
 
