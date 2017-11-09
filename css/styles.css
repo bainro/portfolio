@@ -100,11 +100,11 @@ li {
 
 @keyframes MoveUpDown {
   0% {
-    bottom: 20px; }
+    bottom: 14px; }
   50% {
-    bottom: 29px; }
+    bottom: 23px; }
   100% {
-    bottom: 20px; } }
+    bottom: 14px; } }
 /*Overlay Menu Styles*/
 .overlay {
   height: 0%;
@@ -417,6 +417,13 @@ li {
       .flex-projects p {
         display: block;
         margin-bottom: 1.5em; } }
+
+video {
+  max-width: 100%;
+  max-height: 75vh;
+  margin: 1em 0;
+  border-radius: 25px 25px 0 0;
+  border: gray 2px solid; }
 
 #demo {
   text-decoration: none;
