@@ -83,6 +83,7 @@
 				
 					<video controls>
 						<source src="./video/mtg.mp4" type="video/mp4">
+						Your Browser Does Not Support This Video. Update or Try Another Browser.
 					</video>
 				
 				<p>This in-browser version of the popular Magic the Gathering card game took me a little under a week to build from scratch using Node.js, Socket.io, Express, and jQuery. It requires a mouse, keyboard, and a minimum resolution of 900x500 to play. This project is going to be integrated to my social media website to track user statistics, and to a database to view cards and create decks. Start a game by opening two <a id="demo" href="http://67.160.162.82:88" target="_blank">demo</a> tabs and choosing the decks.</p>
@@ -124,14 +125,18 @@
 
 $(document).ready(function() {
 
+	$('.skills-list li').height($('.skills-list li').width());
+
 	//Throttled function that resizes the skills section's svg logo height to maintain a 1:1 aspect ratio
 	_.throttle($(window).resize(function(){
     	$('.skills-list li').height($('.skills-list li').width());
-	}).trigger('resize'), 500, {trailing: false});
+    	if($('#down-arrow').length){
+    		$('#down-arrow').css("left", ($('body').width() / 2) - $('#down-arrow').width() / 2 + "px");
+    	}
+	}), 500, {trailing: false});
 
-	if($('body').width() >= 700){
+	if($('body').width() >= 500 && $('.landing-banner').height() >= 400){
 		div = document.createElement('div');
-		
 		div.innerHTML = '⇩';
 		div.id = 'down-arrow';
 		$('.landing-banner').append(div);
@@ -139,6 +144,7 @@ $(document).ready(function() {
 			var theDiff = $('.landing-banner').height() - $('html').scrollTop();
 			$("html").animate({ scrollTop: $('.landing-banner').height() });
 		});
+		div.style.left = ($('body').width() / 2) - $('#down-arrow').width() / 2 + "px";
 	}
 
 	//Makes Hamburger Disappear/Appear on Scroll Events
